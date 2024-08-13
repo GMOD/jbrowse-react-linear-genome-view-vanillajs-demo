@@ -1,8 +1,8 @@
 /* global JBrowseReactLinearGenomeView React, ReactDOM */
 const { createViewState, JBrowseLinearGenomeView } =
-  JBrowseReactLinearGenomeView
+  JBrowseReactLinearGenomeView;
 
-const updates = document.getElementById('update')
+const updates = document.getElementById('update');
 
 const state = new createViewState({
   assembly: {
@@ -275,27 +275,27 @@ const state = new createViewState({
     },
   },
   onChange: patch => {
-    updates.innerHTML += JSON.stringify(patch) + '\n'
+    updates.innerHTML += JSON.stringify(patch) + '\n';
   },
-})
+});
 
 function navTo(event) {
-  state.session.view.navToLocString(event.target.dataset.location)
+  state.session.view.navToLocString(event.target.dataset.location);
 }
-const buttons = document.getElementsByTagName('button')
+const buttons = document.getElementsByTagName('button');
 for (const button of buttons) {
   if (button.dataset.type === 'gene_button') {
-    button.addEventListener('click', navTo)
+    button.addEventListener('click', navTo);
   }
 }
 
-const textArea = document.getElementById('viewstate')
+const textArea = document.getElementById('viewstate');
 document.getElementById('showviewstate').addEventListener('click', () => {
-  textArea.innerHTML = JSON.stringify(state.session.view, undefined, 2)
-})
+  textArea.innerHTML = JSON.stringify(state.session.view, undefined, 2);
+});
 
-const domContainer = document.getElementById('jbrowse_linear_genome_view')
+const domContainer = document.getElementById('jbrowse_linear_genome_view');
 ReactDOM.render(
   React.createElement(JBrowseLinearGenomeView, { viewState: state }),
   domContainer,
-)
+);
